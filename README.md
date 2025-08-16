@@ -33,15 +33,12 @@ public sealed class AntiSpeedHack : Component
 	{
 		for ( int i = 0; i < trackedPlayers.Length; i++ )
 		{
-			if ( trackedPlayers[i] != null )
+			if ( trackedPlayers[i] != null && (trackedPlayers[i].WorldPosition - lastPositions[i]).Length > maxAllowedSpeed )
 			{
-				if ( (trackedPlayers[i].WorldPosition - lastPositions[i]).Length > maxAllowedSpeed )
-				{
-					Log.Warning( $"[AntiCheat] Player {trackedPlayers[i].Name} exceeded speed limit!" );
-					trackedPlayers[i].WorldPosition = lastPositions[i];
-				}
-				lastPositions[i] = trackedPlayers[i].WorldPosition;
+				Log.Warning( $"[AntiCheat] Player {trackedPlayers[i].Name} exceeded speed limit!" );
+				trackedPlayers[i].WorldPosition = lastPositions[i];
 			}
+			lastPositions[i] = trackedPlayers[i].WorldPosition;
 		}
 	}
 }
