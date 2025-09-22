@@ -1,7 +1,3 @@
-# sbox-anti-speedhack
-
-A simple script to block speedhacks in s&box.
-
 ## How it works
 Checks player movement speed every tick.  
 If a player is faster than allowed, their position resets to the last valid one and a warning is shown.
